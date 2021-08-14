@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ImageCard from './components/ImageCard';
 // import './index.css';
 
 function App() {
@@ -17,38 +18,12 @@ function App() {
   }, [term]);
   
   return (
-    <div className="max-w-sm overflow-hidden rounded shadow-lg">
-      <img src="https://source.unsplash.com/random" alt="" className="w-full"/>
-      <div className="px-6 py-4">
-        <div className="mb-2 text-xl font-bold text-purple-500">
-          Photo by Izik Doe
-        </div>
-        <ul>
-          <li>
-            <strong>Views:</strong>
-            4000
-          </li>
-          <li>
-            <strong>Download:</strong>
-            4000
-          </li>
-          <li>
-            <strong>Likes:</strong>
-            4000
-          </li>
-        </ul>
-      </div>
-      <div className="px-6 py-4">
-        <span className="inline-block px-3 py-1 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-          #tag1
-        </span>
-        <span className="inline-block px-3 py-1 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-          #tag1
-        </span>
-        <span className="inline-block px-3 py-1 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-          #tag1
-        </span>
-      </div>
+    <div className="container mx-auto">
+    {isLoading ? <h1 className="mx-auto mt-32 text-6xl text-center">Loading ........</h1> : <div className="grid grid-cols-3 gap-4">
+        {images.map(image => (
+          <ImageCard key={image.id} image={image} />
+        ))}
+      </div>}
     </div>
   );
 }
